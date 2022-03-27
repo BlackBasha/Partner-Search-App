@@ -34,11 +34,15 @@ namespace Business.Concrete
         public IResult Add(Partner partner)
         {
             _partnerRepository.Add(partner);
-            return new SuccessResult(Messages.AppLogAdded);
+            return new SuccessResult(Messages.PartnerAdded);
         }
 
         public IDataResult<IEnumerable<PartnerDataDto>> GetPartners(PartnerFilterDto partnerFilter)
         {
+            if (partnerFilter.Distance <= 0)
+            {
+                throw new ArgumentOutOfRangeException("distance should be positive");
+            }
             var partnerDataList = new List<PartnerDataDto>();
             var offices=_officeRepository.GetList();
             foreach (var item in offices)

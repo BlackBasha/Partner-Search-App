@@ -1,41 +1,55 @@
 <div class="col-md-6 partner-container">
-    <h2 class="text-center">Add User</h2>
-    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="startlan">Start Lan:</label>
-        <input type="text" formControlName="startlan" placeholder="startlan" name="startlan" class="form-control" id="startlan">
+  <h2 class="text-center">Search Partners</h2>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="startlat">Start Lan:</label>
+      <input type="text"  value="-0.142571" formControlName="startlat" placeholder="startlat" name="startlat" class="form-control"
+        id="startlat" [ngClass]="{ 'is-invalid': submitted && f.startlat.errors }" >
+      <div *ngIf="submitted && f.startlat.errors" class="invalid-feedback">
+        <div *ngIf="f.startlat.errors.required">startlat is required</div>
       </div>
-  
-      <div class="form-group">
-        <label for="startlon">Start Lon:</label>
-        <input type="startlon" formControlName="startlon" placeholder="startlon" name="startlon" class="form-control" id="startlon">
-      </div>
-  
-      <div class="form-group">
-        <label for="distance">Distance:</label>
-        <input formControlName="distance" placeholder="distance" name="distance" class="form-control" id="distance">
-      </div>
-  
-      <button class="btn btn-success" (click)="search()">Search</button>
-    </form>
-  </div>  
+    </div>
 
+    <div class="form-group">
+      <label for="startlon">Start Lon:</label>
+      <input type="startlon" formControlName="startlon" placeholder="startlon" name="startlon" class="form-control"
+        id="startlon" [ngClass]="{ 'is-invalid': submitted && f.startlon.errors }"  value="51.5144636">
+      <div *ngIf="submitted && f.startlon.errors" class="invalid-feedback">
+        <div *ngIf="f.startlon.errors.required">startlon is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="distance">Distance:</label>
+      <input formControlName="distance" placeholder="distance" name="distance" class="form-control" id="distance"
+        [ngClass]="{ 'is-invalid': submitted && f.distance.errors }">
+      <div *ngIf="submitted && f.distance.errors" class="invalid-feedback">
+        <div *ngIf="f.distance.errors.required">distance is required</div>
+      </div>
+    </div>
+
+    <button class="btn btn-success">Search</button>
+  </form>
+</div>
+<!--Flag variable is used here-->
+<div class="container" *ngIf="loading">
+  <h3>Loading ...</h3>
+</div>
 <div class="col-md-6 user-container partner-container">
-    <table class="table table-striped">
-      <thead>
+  <table class="table table-striped">
+    <thead>
       <tr>
         <th class="hidden">Id</th>
         <th>Address</th>
         <th>Organization</th>
       </tr>
-      </thead>
-      <tbody>
+    </thead>
+    <tbody>
       <tr *ngFor="let partner of partners">
         <td class="hidden">{{partner.id}}</td>
         <td>{{partner.address}}</td>
         <td>{{partner.organization}}</td>
-    </tr>
-      </tbody>
-    </table>
-  </div>
-  
+      </tr>
+    </tbody>
+  </table>
+</div>

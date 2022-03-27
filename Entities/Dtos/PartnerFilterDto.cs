@@ -9,7 +9,7 @@ namespace Entities.Dtos
    public class PartnerFilterDto
     {
         public double StartLon { get; set; }
-        public double StartLan { get; set; }
+        public double StartLat { get; set; }
 
         public double Distance { get; set; }
     }

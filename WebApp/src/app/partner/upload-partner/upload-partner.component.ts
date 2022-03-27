@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PartnerService } from 'src/app/service/partner.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-upload-partner',
@@ -8,7 +9,7 @@ import { PartnerService } from 'src/app/service/partner.service';
 })
 export class UploadPartnerComponent implements OnInit {
 
-  constructor( private partnerService:PartnerService) { }
+  constructor( private partnerService:PartnerService,private toastr: ToastrService) { }
 
    // Variable to store shortLink from api response
    shortLink: string = "";
@@ -33,10 +34,12 @@ export class UploadPartnerComponent implements OnInit {
       this.partnerService.upload(fileReader.result)
     .subscribe(
       data => {
-          alert('data uploaded successfully.');     
+        this.toastr.success('Data uploaded successfully.','Info!' );
+          this.loading=false;    
       },
       error => {
-        alert(error);
+        this.toastr.error(error,'Problem with Uploading Data!');
+        this.loading=false;  
       });
     }
     fileReader.readAsText(this.file);

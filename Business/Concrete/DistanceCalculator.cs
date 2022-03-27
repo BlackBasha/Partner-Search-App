@@ -20,7 +20,14 @@ namespace Business.Concrete
         {
             return x * PIx / 180;
         }
-
+        /// <summary>
+        /// Calculate the distance between tow points
+        /// </summary>
+        /// <param name="lon1"></param>DistanceCalculator class that contanis the logic of calculation the distance betwenn tow points
+        /// <param name="lat1"></param>
+        /// <param name="lon2"></param>
+        /// <param name="lat2"></param>
+        /// <returns></returns>
         public static double DistanceBetweenPlaces(double lon1, double lat1, double lon2, double lat2)
         {
             double R = 6371; // km

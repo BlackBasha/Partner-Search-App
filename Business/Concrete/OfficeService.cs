@@ -34,13 +34,13 @@ namespace Business.Concrete
                 return result;
             }
             _officeRepository.Add(office);
-            return new SuccessResult(Messages.TargetAppAdded);
+            return new SuccessResult(Messages.OfficeAdded);
         }
 
         public IResult Delete(Office office)
         {
             _officeRepository.Delete(office);
-            return new SuccessResult(Messages.TargetAppDeleted);
+            return new SuccessResult(Messages.OfficeDeleted);
         }
 
         public IDataResult<Office> Filter(string coordination)
@@ -63,7 +63,7 @@ namespace Business.Concrete
         public IResult Update(Office targetApp)
         {
             _officeRepository.Update(targetApp);
-            return new SuccessResult(Messages.TargetAppUpdated);
+            return new SuccessResult(Messages.OfficeUpdated);
         }
 
         private IResult CheckIfOfficeExist(string location)
@@ -72,7 +72,7 @@ namespace Business.Concrete
             var result = _officeRepository.GetList(p => p.Location == location).Any();
             if (result)
             {
-                return new ErrorResult(Messages.TargetAppAlreadyExists);
+                return new ErrorResult(Messages.OfficeAlreadyExists);
             }
 
             return new SuccessResult();

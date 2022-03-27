@@ -7,13 +7,13 @@ import { PartnerDataDto } from '../model/partner.model';
 export class PartnerService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:8080/users/';
+  baseUrl: string = 'http://localhost:62237/api/';
 
   search(searchPayLoad) : Observable<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
-    return this.http.post<any>('http://localhost:62237/api/Partner/Search', searchPayLoad,{headers: headers});
+    return this.http.post<any>(this.baseUrl+'Partner/Search', searchPayLoad,{headers: headers});
     
   }
 
@@ -23,7 +23,7 @@ export class PartnerService {
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
     const obj = JSON.parse(data);
-    return this.http.post<void>('http://localhost:62237/api/Partner/Upload', obj,{headers: headers});
+    return this.http.post<void>(this.baseUrl+'Partner/Upload', obj,{headers: headers});
     
   }
 }

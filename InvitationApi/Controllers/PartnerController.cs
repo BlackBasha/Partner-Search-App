@@ -26,6 +26,7 @@ namespace InvitationApi.Controllers
         [HttpPost]
         public IActionResult Search(PartnerFilterDto partnerFilter)
         {
+            
            var result = _partnerService.GetPartners(partnerFilter);
            return  Ok(result);
         }
@@ -35,6 +36,12 @@ namespace InvitationApi.Controllers
         {
             _partnerService.SaveData(data);
             return Ok();
+        }
+
+        [HttpGet]
+        public IActionResult Home()
+        {
+            return Ok("The app is working");
         }
 
 
