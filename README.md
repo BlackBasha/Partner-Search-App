@@ -1,4 +1,4 @@
-WebSite Down Checker
+Partner Search App
 ========================================
 **Used technology and Libraries:**
 
