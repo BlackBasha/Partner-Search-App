@@ -49,7 +49,7 @@ namespace Business.Concrete
             {
                 var officelan =double.Parse( item.Coordinates.Split(',')[0]);
                 var officelon = double.Parse(item.Coordinates.Split(',')[1]);
-                var officeDistance = DistanceCalculator.DistanceBetweenPlaces(partnerFilter.StartLon, partnerFilter.StartLan, officelon, officelan);
+                var officeDistance = DistanceCalculator.DistanceBetweenPlaces(partnerFilter.StartLon, partnerFilter.StartLat, officelon, officelan);
                 if (officeDistance< partnerFilter.Distance)
                 {
                     var partner = _partnerRepository.Get(x=>x.Id==item.PartnerId);

@@ -19,7 +19,7 @@ namespace TestApp
         [TestMethod]
         public async Task ShouldReturnSuccessResponse()
         {
-            var partnerFilter =new  Entities.Dtos.PartnerFilterDto{ StartLon=1, StartLan=1, Distance=30000 };
+            var partnerFilter =new  Entities.Dtos.PartnerFilterDto{ StartLon=1, StartLat =1, Distance=30000 };
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(partnerFilter);
             var data = new System.Net.Http.StringContent(json, System.Text.Encoding.UTF8, "application/json");
             var client = _factory.CreateClient();
